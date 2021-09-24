@@ -6,7 +6,11 @@ const userValidation = require('./validation');
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const user_res = await User.find();
+        let {limit, page} = req.query;
+        const user_res = await User.find().
+        limit(limit * 1).
+        skip((page - 1) * limit).
+        sort({"createdAt": -1});
 
         if (user_res.length <= 0) {
             console.log("User_res", user_res)
