@@ -15,6 +15,12 @@ const userSchema = new Schema({
         type: String,
         default: "matic"
     },
+    email: {
+        type: String
+    },
+    password: {
+        type: String
+    }
 });
 
 userSchema.set("timestamps", true);

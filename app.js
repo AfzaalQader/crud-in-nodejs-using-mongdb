@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
+require('dotenv').config();
+const database_url = process.env.DATABASE_URL
 
 /* var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users'); */
@@ -11,8 +13,8 @@ var usersRouter = require('./routes/users'); */
 const api = require('./api');
 
 var app = express();
-
-mongoose.connect("mongodb+srv://admin:Bbaali1234@mycluster.ywccy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+// mongodb+srv://admin:Bbaali1234@mycluster.ywccy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+mongoose.connect(database_url)
   .then(() => {
     console.log("Database connection!");
   })
