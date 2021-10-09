@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -11,8 +12,9 @@ const database_url = process.env.DATABASE_URL
 var usersRouter = require('./routes/users'); */
 
 const api = require('./api');
+const routes = require('./api/route');
+routes(app);
 
-var app = express();
 // mongodb+srv://admin:Bbaali1234@mycluster.ywccy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 mongoose.connect(database_url)
   .then(() => {
